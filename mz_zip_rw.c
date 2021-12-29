@@ -1143,7 +1143,7 @@ int32_t mz_zip_writer_open_file(void *handle, const char *path, int64_t disk_siz
 
         /* Create destination directory if it doesn't already exist */
         if (strchr(path, '/') != NULL || strrchr(path, '\\') != NULL) {
-            strncpy(directory, path, sizeof(directory));
+            strncpy(directory, path, sizeof(directory) - 1);
             mz_path_remove_filename(directory);
             if (mz_os_file_exists(directory) != MZ_OK)
                 mz_dir_make(directory);

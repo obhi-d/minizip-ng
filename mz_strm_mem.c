@@ -63,7 +63,7 @@ static int32_t mz_stream_mem_set_size(void *stream, int32_t size) {
         return MZ_BUF_ERROR;
 
     if (mem->buffer) {
-        memcpy(new_buf, mem->buffer, mem->size);
+        memcpy(new_buf, mem->buffer, new_size > mem->size ? mem->size : new_size);
         MZ_FREE(mem->buffer);
     }
 
